@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Leaflet Lunch</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+  <style>
+    #map {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+
+  <script>
+    var map = L.map('map').setView([40.7128, -74.0060], 12);
+    L.tileLayer('https://a.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    // add a simple marker to the map for Chris' favorite pizza shop.
+
+    var crowdPizza = [
+      {
+         name: 'Chris',
+         pizzaShop: "Ben's Pizza",
+         lat: 40.730376,
+         lon: -74.0008582,
+       },
+      {
+         name: 'Kerry',
+         pizzaShop: "Speedy Romeo",
+         lat: 40.6875171,
+         lon: -73.9600013,
+       },
+      {
+         name: 'Nilesh',
+         pizzaShop: "Bella Napoli Pizza",
+         lat: 40.8995193,
+         lon: -73.8645565,
+       },
+      {
+         name: 'Eban',
+         pizzaShop: "Joe’s Pizza",
+         lat: 40.7305,
+         lon: -74.0020,
+       },
+      {
+         name: 'Dan,Steve & Issac',
+         pizzaShop: "Daddy’s Greens Pizza",
+         lat: 40.6807599,
+         lon: -73.9310251,
+       },
+      {
+         name: 'Peter',
+         pizzaShop: "Joe's Pizza",
+         lat: 40.7305876,
+         lon: -74.0043297,
+       },
+      {
+         name: 'Jeremy Anne',
+         pizzaShop: "Di Fara Pizza",
+         lat: 40.6250156,
+         lon: -73.9615451,
+       },
+      {
+         name: 'Daniel',
+         pizzaShop: "Mariella Pizza",
+         lat: 40.7691514,
+         lon: -73.9650117,
+       },
+      {
+         name: 'Karen',
+         pizzaShop: "Fascati Pizzeria",
+         lat: 40.6985534,
+         lon: -74.0015008,
+       },
+      {
+         name: 'Frank',
+         pizzaShop: "Grimaldi’s",
+         lat: 40.702288,
+         lon: -73.9938846,
+       },
+      {
+         name: 'Kelsey',
+         pizzaShop: "Roma Pizza",
+         lat: 40.6746103,
+         lon:-74.0100297,
+       },
+    ]
+    console.log(crowdPizza);
+    crowdPizza.forEach(function(pizzaObject) {
+      console.log(pizzaObject)
+      L.marker([pizzaObject.lat, pizzaObject.lon])
+        .bindPopup(`${pizzaObject.name} likes to eat at ${pizzaObject.pizzaShop}`)
+        .addTo(map);
+    });
+
+  </script>
+
+</body>
+</html>
